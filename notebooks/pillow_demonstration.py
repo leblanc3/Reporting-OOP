@@ -14,7 +14,7 @@ label = Label(root, text="Deez Nuts", font=("Orange Gummy", 24)).pack()
 # image_file = ImageTk.PhotoImage(image="C:/users/pc/downloads/man.jpg", size=(32,32))
 # image_file2 = ImageTk.PhotoImage(Image.open("C:/users/pc/downloads/man.jpg").resize((32, 32)))
 size=(32,32)
-image_file2 = ImageTk.PhotoImage(Image.open("C:/users/pc/downloads/man.jpg", size))
+image_file2 = ImageTk.PhotoImage(Image.open("C:/users/pc/downloads/man.jpg"))
 
 Button(root, text="Hello my child", image=image_file2, compound=LEFT).pack()
 
