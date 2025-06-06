@@ -1,2 +1,19 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Jupyter Notebooks
+*.ipynb text
+
+# Python scripts
+*.py text
+
+# Images - treat as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+
+# Explicitly mark README and config files as text
+README.md text
+.gitattributes text
+.gitignore text
