@@ -1,20 +1,12 @@
 from tkinter import *
 from tkinter import ttk
 
-def display_widget():
-    selected_widget = widget_chooser.curselection()
+class WidgetSelectorDisplay:
+    main = Tk()
+    main.geometry("1280x720")
+    main.title("Demonstration Program")
 
-    if selected_widget:
-        selected_widget_name = widget_chooser.get(selected_widget[0])
-        selected_widget_class = widgets_dictionary[selected_widget_name]
-        
-        selected_widget_class(main).grid()
-
-main = Tk()
-main.geometry("1280x720")
-main.title("Demonstration Program")
-
-widgets_dictionary = {"Frame": Frame, 
+    widgets_dictionary = {"Frame": Frame, 
                       "Label": Label, 
                       "Button": Button, 
                       "Checkbutton": Checkbutton, 
@@ -25,13 +17,26 @@ widgets_dictionary = {"Frame": Frame,
                       "Scrollbar": Scrollbar, 
                       "Text": Text}
 
-widget_chooser = Listbox(main, height=10)
-widget_chooser.grid()
+    widget_chooser = Listbox(main, height=10)
+    widget_chooser.pack()
 
-for widget_name in widgets_dictionary:
-    widget_chooser.insert(END, widget_name)
+    @staticmethod
+    def initialize_widgets():
+        for widget_name in WidgetSelectorDisplay.widgets_dictionary:
+            WidgetSelectorDisplay.widget_chooser.insert(END, widget_name)
+        
+        choose_widget_button = Button(WidgetSelectorDisplay.main, text="Display widget", command=WidgetSelectorDisplay.display_widget)
+        choose_widget_button.pack()
 
-choose_widget_button = Button(main, text="Display widget", command=display_widget)
-choose_widget_button.grid()
+    @staticmethod
+    def display_widget():
+        selected_widget = WidgetSelectorDisplay.widget_chooser.curselection()
 
-main.mainloop()
+        if selected_widget:
+            selected_widget_name = WidgetSelectorDisplay.widget_chooser.get(selected_widget[0])
+            selected_widget_class = WidgetSelectorDisplay.widgets_dictionary[selected_widget_name]
+            
+            selected_widget_class(WidgetSelectorDisplay.main).pack()
+
+WidgetSelectorDisplay.initialize_widgets()
+WidgetSelectorDisplay.main.mainloop()
