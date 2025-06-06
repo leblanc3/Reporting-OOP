@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 
+# Comment ni zybert
+
 def display_widget():
     selected_widget = widget_chooser.curselection()
 
