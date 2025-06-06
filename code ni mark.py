@@ -5,7 +5,7 @@ main = Tk()
 main.title("Doctor's Note")
 main.geometry("1280x720")
 
-own_image = PhotoImage(file="C:/Users/ThinkPad/Downloads/jesus.png")
+own_image = PhotoImage(file="images\jesus.png")
 
 def change_color():
     color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
