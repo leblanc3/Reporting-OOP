@@ -5,7 +5,10 @@ from PIL import Image, ImageTk
 
 window = Tk()
 window.title("Widget Customizer")
-window.geometry("1000x700")  # wider window to fit both sides nicely
+window.geometry("1000x400")
+
+icon = PhotoImage(file="images/group_icon.png")
+window.iconphoto(True, icon)
 
 # Global variables
 current_widget = None
@@ -318,5 +321,4 @@ def change_image():
 
 Button(image_frame, text="Change Image", command=change_image).grid(row=1, column=2, rowspan=2, padx=20, sticky="nw")
 
-# ---------- Run App ----------
 window.mainloop()
