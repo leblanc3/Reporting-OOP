@@ -1,11 +1,14 @@
 from tkinter import *
+from PIL import ImageTk, Image
 import random
 
 main = Tk()
 main.title("Doctor's Note")
 main.geometry("1280x720")
 
-own_image = PhotoImage(file="images\jesus.png")
+own_image = Image.open("images/jesus.png")
+own_image_resized = own_image.resize((500, 500))
+own_image_tk = ImageTk.PhotoImage(own_image_resized)
 
 def change_color():
     color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
@@ -29,7 +32,8 @@ def lower_lifespan():
         first_line.config(text="Your suffering is no longer.")
         second_line.destroy()
         upper_line.destroy()
-        Label(main, image=own_image).pack(expand=True)
+        button.destroy()
+        Label(main, image=own_image_tk).pack(expand=True, fill="both")
     else:
         second_line.config(text="You have " + str(months_to_live) + " months left to live.")
 
@@ -47,7 +51,8 @@ first_line.pack(expand=True)
 second_line = Label(main, text="You have " + str(months_to_live) + " months left to live.")
 second_line.pack(expand=True)
 
-Button(main, text="Click to slowly end your suffering", command=lower_lifespan).pack(expand=True)
+button = Button(main, text="Click to slowly end your suffering", command=lower_lifespan)
+button.pack(expand=True)
 
 change_color()
 change_font()
